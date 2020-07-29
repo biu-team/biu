@@ -2,18 +2,18 @@
 	"parser": "@typescript-eslint/parser",
 
 
-	// "parserOptions": {
-	// 	"parser": "typescript-eslint",
-	// 	"ecmaVersion": 6,
-	// 	"sourceType": "module",
-	// 	"ecmaFeatures": {
-	// 		"jsx": true,
-	// 		"modules": true,
-	// 		"experimentalObjectRestSpread": true,
-	// 		"globalReturn":true                    //允许return在全局使用
+	"parserOptions": {
+		"parser": "typescript-eslint",
+		"ecmaVersion": 6,
+		"sourceType": "module",
+		"ecmaFeatures": {
+			"jsx": true,
+			"modules": true,
+			"experimentalObjectRestSpread": true,
+			"globalReturn":true                    //允许return在全局使用
 
-	// 	}
-	// },
+		}
+	},
 	"globals": {
 		"_": true,
 		"CSSModule": true,

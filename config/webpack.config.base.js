@@ -7,17 +7,17 @@ const DIR_PATH = ENV_IS_DEV ? "" : `static.${new Date().getTime()}/`;
 const localIp = (() => {
 	const ips = [];
 	const os = require("os");
-	const ntwk = os.networkInterfaces();
-	for (const k in ntwk) {
-		for (let i = 0; i < ntwk[k].length; i++) {
-			const _add = ntwk[k][i].address;
+	const network = os.networkInterfaces();
+	for (const k in network) {
+		for (let i = 0; i < network[k].length; i++) {
+			const _add = network[k][i].address;
 			if (
 				_add &&
 				_add.split(".").length == 4 &&
-				!ntwk[k][i].internal &&
-				ntwk[k][i].family == "IPv4"
+				!network[k][i].internal &&
+				network[k][i].family == "IPv4"
 			) {
-				ips.push(ntwk[k][i].address);
+				ips.push(network[k][i].address);
 			}
 		}
 	}
@@ -26,8 +26,13 @@ const localIp = (() => {
 const config = {
 	entry: path.join(__dirname, '../src/main.ts'),
 	output: {
-		filename: 'bundle.js',
-		path: path.resolve(__dirname, '../dist')
+		path: path.resolve(__dirname, '../dist'),
+		filename: 'js/[name].js',
+
+		chunkFilename: "js/[id].js",
+		library: "Biu",
+		libraryTarget: "umd"
+
 	},
 	module: {
 		rules: [{
